@@ -1,0 +1,5 @@
+x = float(input("Введите координату X"))
+y = float(input("Введите координату Y"))
+r = float(input("Введите радиус R"))
+
+if ((r <= x <= 0 and -1*(y**2-r**2) <= y <= (y + r)) or (0< x <= r and (0<=y<=))):
