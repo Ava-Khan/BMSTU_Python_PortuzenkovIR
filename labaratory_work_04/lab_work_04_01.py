@@ -1,33 +1,37 @@
 import random
 
-n = int(input("Введите длину масссива "))
+n = int(input("Введите длину массива: "))
 
-masive = list()
+masive = [round(random.uniform(-5, 5), 3) for _ in range(n)]
 
-for j in range (n):
-    masive.append((round(random.uniform(-5, 5), 3)))
-
-max = -6
-
-for j in masive:
-    if max <= abs(j): max = abs(j)
-
-print("Массив до преобразования")
+print("Массив до преобразования:")
 print(masive)
 
-print(max)
+max_element = max(masive)
+print(f"Максимальный элемент: {max_element}")
 
-a = float(input("Введите значения границы a "))
+last_pos_idx = -1
+for i in range(len(masive)-1, -1, -1):
+    if masive[i] > 0:
+        last_pos_idx = i
+        break
 
-b = float(input("Введите значения границы b "))
-buf_mas = masive
-for i in buf_mas:
-    n = 0
-
-    if a <= abs(i) <= b:
-        masive.remove(i)
-        masive.append(0)
-print("Массив после преобразования")
+sum_before = sum(masive[:last_pos_idx]) if last_pos_idx != -1 else 0
+print(f"Сумма до последнего положительного: {sum_before}")
 
 
+a = float(input("Введите значение границы a: "))
+b = float(input("Введите значение границы b: "))
+
+i = 0
+removed_count = 0
+while i < len(masive):
+    if a <= abs(masive[i]) <= b:
+        masive.pop(i)
+        removed_count += 1
+    else:
+        i += 1
+masive.extend([0] * removed_count)
+
+print("Массив после преобразования:")
 print(masive)
