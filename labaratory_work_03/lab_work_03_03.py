@@ -1,25 +1,40 @@
-from math import *
+# 1. Переименовать репозиторий проекта в соответствии с соглашением об именовании - репозиторий проекта
+# и папка проекта должны иметь имя вида "BMSTU_Python_ФамилияИО" (ФамилияИО должно быть указано
+# в латинской транскрипции).
+# 2. Исключить операторы импорта для неиспользуемых библиотек.
+# 3. Оформить и разместить в папке отчет о выполнении лабораторной работы в соответствии с шаблоном отчета
+# о лабораторной работе (см. файл template_laboratory_report_00.ott) и методическими указаниями в нем.
+# 4. Исправить текст программы в соответствии с требованиями Руководства по стилю кода Python
+# (https://peps.python.org/pep-0008/).
+# 5. В отчете пояснить использование f-строк.
 
-def ln(x, eps):
-    step = 1000000
+def calculate_ln(x, eps):
+    step = 1_000_000
     n = 0
     val = 0
     while step >= eps:
-        step = ((x**(2*n+1))/(2*n+1))
+        step = (x ** (2 * n + 1)) / (2 * n + 1)
         val += step
         n += 1
-    print(f"I   {x: 5.2f}   I   {val: 5.2f}  I  {n}  I")
-print("+--------+--------+-----+")
-print("I  X    I   Y    I   N I")
+    return val, n
 
 
-x_st = float(input("Введите точку начада из интервала (-1; 1)"))
-x_end = float(input("Введите точку конца из интервала (-1; 1)"))
-step = float(input("Введите шаг"))
-eps = float(input("Введите значение ε погрешности"))
+def main():
+    print("+--------+--------+-----+")
+    print("I   X    I   Y    I  N  I")
+    print("+--------+--------+-----+")
 
-while x_st <= x_end:
-    ln(x_st, eps)
-    x_st += step
+    x_start = float(input("Введите точку начала из интервала (-1; 1): "))
+    x_end = float(input("Введите точку конца из интервала (-1; 1): "))
+    step = float(input("Введите шаг: "))
+    eps = float(input("Введите значение ε погрешности: "))
+
+    current_x = x_start
+    while current_x <= x_end:
+        y_value, iterations = calculate_ln(current_x, eps)
+        print(f"I {current_x: 6.2f}  I {y_value: 6.2f}  I {iterations:3} I")
+        current_x += step
 
 
+if __name__ == "__main__":
+    main()
