@@ -8,8 +8,8 @@
 # (https://peps.python.org/pep-0008/).
 # 5. В отчете пояснить использование f-строк.
 
-def calculate_ln(x, eps):
-    step = 1_000_000
+def calculate_ln(x, eps, step=100_000_000):
+
     n = 0
     val = 0
     while step >= eps:
