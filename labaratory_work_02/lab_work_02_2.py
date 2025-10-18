@@ -6,14 +6,28 @@
 # 3. Исправить текст программы в соответствии с требованиями Руководства по стилю кода Python
 # (https://peps.python.org/pep-0008/).
 
-x = float(input("Введите координату X: "))
-y = float(input("Введите координату Y: "))
-r = float(input("Введите радиус R: "))
+def main():
+    try:
+        x = float(input("Введите X: "))
+        y = float(input("Введите Y: "))
+        r = float(input("Введите R: "))
 
-condition_1 = (r <= x <= 0 and -(y**2 - r**2)**0.5 <= y <= (y + r))
-condition_2 = (0 < x <= r and (0 <= y <= (y**2 - r**2)**0.5))
+        if r <= 0:
+            print("Ошибка: радиус должен быть > 0")
+            return
 
-if condition_1 or condition_2:
-    print("Точка внутри фигуры")
-else:
-    print("Точка снаружи фигуры")
+        left_cond = (x <= 0 and r ** 2 - x ** 2 >= 0 and
+                     -((r ** 2 - x ** 2) ** 0.5) <= y <= (r ** 2 - x ** 2) ** 0.5)
+
+        right_cond = (x > 0 and r ** 2 - y ** 2 >= 0 and
+                      0 <= y <= (r ** 2 - y ** 2) ** 0.5)
+
+        print("Точка внутри фигуры" if left_cond or right_cond
+              else "Точка снаружи фигуры")
+
+    except ValueError:
+        print("Ошибка: введите числа")
+
+
+if __name__ == "__main__":
+    main()

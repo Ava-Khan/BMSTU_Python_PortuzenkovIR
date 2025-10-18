@@ -1,6 +1,4 @@
 from random import uniform
-from math import sqrt
-
 
 
 def generate_matrix(size):
@@ -8,11 +6,9 @@ def generate_matrix(size):
     for i in range(0, size):
         matr.append(list())
         for j in range(0, size):
-            matr[i].append(round(uniform(-10, 10),2))
-
+            matr[i].append(round(uniform(-10, 10), 2))
     return matr
-a = generate_matrix(5)
-print(a)
+
 
 def sum_el(matr):
     sum = 0
@@ -23,14 +19,43 @@ def sum_el(matr):
             if matr[j][i] < 0:
                 flag = False
             buf += matr[j][i]
-        buf = buf * flag
-        sum += buf
+        if flag:
+            sum += buf
+            print(f"Столбец {i}: сумма = {buf:.2f}")
     return sum
 
+
 def min_sum_dig(matr):
-    for i in range(0, len(matr)):
-        for j in range(0, len(matr)):
-            print()
+    n = len(matr)
+    min_sum = float('inf')
+    for k in range(0, 2 * n - 1):
+        current_sum = 0
+        for i in range(0, n):
+            j = k - i
+            if j >= 0 and j < n:
+                current_sum += abs(matr[i][j])
+        if current_sum < min_sum and current_sum > 0:
+            min_sum = current_sum
+        print(f"Диагональ i+j={k}: сумма модулей = {current_sum:.2f}")
+    return min_sum
 
-print(sum_el(a))
 
+def main():
+    n = int(input("Введите размер матрицы "))
+    a = generate_matrix(n)
+
+    print("Матрица:")
+    for row in a:
+        print(' '.join(f'{elem:7.2f}' for elem in row))
+
+    print("\n1. Сумма элементов в столбцах без отрицательных элементов:")
+    sum_result = sum_el(a)
+    print(f"Общая сумма: {sum_result:.2f}")
+
+    print("\n2. Минимум среди сумм модулей элементов диагоналей:")
+    min_result = min_sum_dig(a)
+    print(f"Минимальная сумма: {min_result:.2f}")
+
+
+if __name__ == "__main__":
+    main()

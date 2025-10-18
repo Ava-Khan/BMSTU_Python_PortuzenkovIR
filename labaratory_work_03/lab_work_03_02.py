@@ -13,7 +13,6 @@ from math import sqrt
 
 
 def check_hit(x, y, r):
-    """Проверяет попадание точки в заданную область."""
     in_first_quarter = x >= 0 and y >= 0 and sqrt(x ** 2 + y ** 2) <= r
     in_third_quarter = x <= 0 and y <= 0 and sqrt(x ** 2 + y ** 2) <= r
     in_second_quarter = x <= 0 and y >= 0 and y <= x + r

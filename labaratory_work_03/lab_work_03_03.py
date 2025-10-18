@@ -20,16 +20,16 @@ def calculate_ln(x, eps):
 
 
 def main():
-    print("+--------+--------+-----+")
-    print("I   X    I   Y    I  N  I")
-    print("+--------+--------+-----+")
-
     x_start = float(input("Введите точку начала из интервала (-1; 1): "))
     x_end = float(input("Введите точку конца из интервала (-1; 1): "))
     step = float(input("Введите шаг: "))
     eps = float(input("Введите значение ε погрешности: "))
 
     current_x = x_start
+
+    print("+--------+--------+-------+")
+    print("I   X    I   Y    I  N    I")
+    print("+--------+--------+-------+")
     while current_x <= x_end:
         y_value, iterations = calculate_ln(current_x, eps)
         print(f"I {current_x: 6.2f}  I {y_value: 6.2f}  I {iterations:3} I")
