@@ -2,7 +2,7 @@ import turtle
 import math
 
 
-def calculate_ln_taylor(x, eps=1e-6):
+def calculate_ln_taylor(x, eps=0.0001):
     """Вычисление ln((1+x)/(1-x)) через ряд Тейлора"""
     if abs(x) >= 1:
         return None, 0
@@ -94,7 +94,7 @@ def plot_functions():
     x_start = -0.99
     x_end = 0.99
     step = 0.01
-    eps = 1e-4
+    eps = 0.1
 
     # Построение ряда Тейлора
     taylor_turtle.penup()

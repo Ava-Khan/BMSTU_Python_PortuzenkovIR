@@ -2,7 +2,7 @@ import turtle
 import random
 import math
 
-turtle.tracer(0)
+turtle.tracer(1)
 def check_hit(x, y, r):
     """Проверка попадания точки в заштрихованную область"""
     in_first_quarter = x >= 0 and y >= 0 and math.sqrt(x ** 2 + y ** 2) <= r
@@ -181,7 +181,7 @@ def monte_carlo_simulation(r, num_points=5000):
 
 def main():
     r = 5
-    monte_carlo_simulation(r, 5000)
+    monte_carlo_simulation(r, 10000)
     turtle.mainloop()
 
 
