@@ -187,7 +187,7 @@ def window_deleted():
     """Обрабатывает закрытие окна через [X]"""
     if askyesno("Выход", "Завершить работу?"):
         root.destroy()
-
+ 
 
 # Привязка обработчиков событий
 cv.bind('<Button-1>', showXY)
