@@ -1,22 +1,14 @@
 from lexer import Lexer
 from parser import Parser
 
-text_input = """
-let name = "john";
-return(name);
-"""
-
+# Самый простой тест
+code = "print(2+2);"  # Проще некуда!
 
 lexer = Lexer().get_lexer()
-tokens = lexer.lex(text_input)
-
-
 pg = Parser()
 pg.parse()
 parser = pg.get_parser()
-parser.parse(tokens).eval()
 
-
-#
-# for token in tokens:
-#     print(token)
+tokens = lexer.lex(code)
+ast = parser.parse(tokens)
+ast.eval({})

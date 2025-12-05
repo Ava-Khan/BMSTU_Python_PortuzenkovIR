@@ -16,7 +16,7 @@ class Lexer():
         self.lexer.add("FALSE", r"false")
         self.lexer.add("FUNCTION", r"function")
         self.lexer.add("RETURN", r"return")
-
+        self.lexer.add("PRINT", r"print")
 
         # Идентификаторы и функции
         self.lexer.add("IDENTIFIER", r"[a-zA-Z_][a-zA-Z0-9_]*")
@@ -28,10 +28,10 @@ class Lexer():
 
         # Операторы
         self.lexer.add("ASSIGN", r"=")
-        self.lexer.add("PLUS", r"\+")
-        self.lexer.add("MINUS", r"-")
+        self.lexer.add("SUM", r"\+")
+        self.lexer.add("SUB", r"\-")
         self.lexer.add("MULTIPLY", r"\*")
-        self.lexer.add("DIVIDE", r"/")
+        self.lexer.add("DIVIDE", r"\/")
         self.lexer.add("EQUALS", r"==")
         self.lexer.add("NOT_EQUALS", r"!=")
         self.lexer.add("LESS_THAN", r"<")

@@ -1,33 +1,33 @@
 class Number:
-    def init(self, value):
+    def __init__(self, value):
         self.value = value
 
     def eval(self, context):
         return int(self.value)
 
 class String:
-    def init(self, value):
+    def __init__(self, value):
         self.value = value
 
     def eval(self, context):
-        return str(self.value[1:-1])  # Убираем кавычки
+        return str(self.value[1:-1])
 
 class Boolean:
-    def init(self, value):
+    def __init__(self, value):
         self.value = value
 
     def eval(self, context):
         return self.value.lower() == 'true'
 
 class Variable:
-    def init(self, name):
+    def __init__(self, name):
         self.name = name
 
     def eval(self, context):
         return context.get(self.name)
 
 class BinaryOp:
-    def init(self, left, right):
+    def __init__(self, left, right):
         self.left = left
         self.right = right
 
@@ -70,14 +70,14 @@ class GreaterThan(BinaryOp):
         return self.left.eval(context) > self.right.eval(context)
 
 class Print:
-    def init(self, value):
+    def __init__(self, value):
         self.value = value
 
     def eval(self, context):
         print(self.value.eval(context))
 
 class IfStatement:
-    def init(self, condition, then_branch, else_branch=None):
+    def __init__(self, condition, then_branch, else_branch=None):
         self.condition = condition
         self.then_branch = then_branch
         self.else_branch = else_branch
@@ -90,7 +90,7 @@ class IfStatement:
         return None
 
 class WhileLoop:
-    def init(self, condition, body):
+    def __init__(self, condition, body):
         self.condition = condition
         self.body = body
 
@@ -101,7 +101,7 @@ class WhileLoop:
         return result
 
 class Block:
-    def init(self, statements):
+    def __init__(self, statements):
         self.statements = statements
 
     def eval(self, context):
@@ -111,17 +111,13 @@ class Block:
         return result
 
 class FunctionCall:
-    def init(self, name, args):
+    def __init__(self, name, args):
         self.name = name
         self.args = args
 
     def eval(self, context):
-        # Базовая реализация встроенных функций
         if self.name == 'console.log':
             values = [arg.eval(context) for arg in self.args]
             print(*values)
             return None
         return None
-
-class Return:
-    def __init__(self, value):
