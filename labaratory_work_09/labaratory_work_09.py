@@ -1,7 +1,6 @@
 from lexer import Lexer
 from parser import Parser
 
-# Самый простой тест
 code = "print(2+2);"
 
 lexer = Lexer().get_lexer()
