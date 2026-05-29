@@ -1,3 +1,7 @@
-from labaratory_work_12.labaratory_work_12_module import *
+from appdirs import system
 
-print(add(1,3))
+#
+from labaratory_work_12.my_package.dir1.dir2.labaratory_work_12_module import substract
+
+if __name__ == '__main__':
+    print(substract(5, 2))
