@@ -140,7 +140,12 @@ def plot_functions():
     info_turtle.penup()
     info_turtle.goto(-1, 3.7)
     info_turtle.color("darkblue")
-    info_turtle.write("Ряд Тейлора для ln((1+x)/(1-x))", font=("Arial", 12, "bold"))
+    info_turtle.write(
+        "Ряд Тейлора для ln((1+x)/(1-x))",
+        font=(
+            "Arial",
+            12,
+            "bold"))
     info_turtle.goto(-1, 3.5)
     info_turtle.write("Синий: ряд Тейлора", font=("Arial", 10))
     info_turtle.goto(-1, 3.3)

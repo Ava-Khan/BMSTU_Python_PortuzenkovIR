@@ -7,7 +7,6 @@ class Lexer():
 
     def _add_tokens(self):
 
-
         # 1. Ключевые слова (должны быть ПЕРЕД идентификаторами!)
         self.lexer.add("LET", r"let")
         self.lexer.add("WHILE", r"while")

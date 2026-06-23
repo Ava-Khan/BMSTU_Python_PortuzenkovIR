@@ -1,6 +1,7 @@
 from llvmlite import ir, binding
 from astt import *
 
+
 class CodeGen:
     def __init__(self):
         self.binding = binding
@@ -30,7 +31,8 @@ class CodeGen:
         target = self.binding.Target.from_default_triple()
         target_machine = target.create_target_machine()
         backing_mod = self.binding.parse_assembly("")
-        self.engine = self.binding.create_mcjit_compiler(backing_mod, target_machine)
+        self.engine = self.binding.create_mcjit_compiler(
+            backing_mod, target_machine)
 
     def _declare_print_function(self):
         """Объявление функции printf"""
@@ -188,7 +190,9 @@ class CodeGen:
 
     def visit_Boolean(self, node):
         """Обработка булевых значений"""
-        return ir.Constant(ir.IntType(1), 1 if node.value.lower() == 'true' else 0)
+        return ir.Constant(
+            ir.IntType(1),
+            1 if node.value.lower() == 'true' else 0)
 
     def create_ir(self, ast):
         """Создание IR для AST"""

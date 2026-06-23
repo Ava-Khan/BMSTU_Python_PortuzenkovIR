@@ -3,6 +3,8 @@ import random
 import math
 
 turtle.tracer(1)
+
+
 def check_hit(x, y, r):
     """Проверка попадания точки в заштрихованную область"""
     in_first_quarter = x >= 0 and y >= 0 and math.sqrt(x ** 2 + y ** 2) <= r
@@ -12,7 +14,14 @@ def check_hit(x, y, r):
     return in_first_quarter or in_third_quarter or in_second_quarter
 
 
-def fill_circular_segment(turtle_obj, center_x, center_y, radius, start_angle, end_angle, steps=100):
+def fill_circular_segment(
+        turtle_obj,
+        center_x,
+        center_y,
+        radius,
+        start_angle,
+        end_angle,
+        steps=100):
     """Точная заливка сегмента окружности"""
     turtle_obj.penup()
     turtle_obj.goto(center_x, center_y)
@@ -149,8 +158,12 @@ def monte_carlo_simulation(r, num_points=5000):
     result_turtle.write(f"Метод Монте-Карло (N = {num_points})",
                         font=("Arial", 12, "bold"))
     result_turtle.goto(-r, r + 0.5)
-    result_turtle.write(f"Попаданий: {hit_count}/{num_points} ({hit_count / num_points * 100:.1f}%)",
-                        font=("Arial", 10))
+    result_turtle.write(
+        f"Попаданий: {hit_count}/{num_points} ({
+            hit_count / num_points * 100:.1f}%)",
+        font=(
+            "Arial",
+            10))
     result_turtle.goto(-r, r + 0.2)
     result_turtle.write(f"Оценка площади: {estimated_area:.4f}",
                         font=("Arial", 10))
@@ -166,11 +179,19 @@ def monte_carlo_simulation(r, num_points=5000):
     result_turtle.goto(-r, r - 0.7)
     result_turtle.write("Легенда:", font=("Arial", 10, "bold"))
     result_turtle.goto(-r, r - 0.9)
-    result_turtle.write("• Светло-синий: 1-я и 3-я четверти круга", font=("Arial", 8))
+    result_turtle.write(
+        "• Светло-синий: 1-я и 3-я четверти круга",
+        font=(
+            "Arial",
+            8))
     result_turtle.goto(-r, r - 1.1)
     result_turtle.write("• Светло-зеленый: 2-я четверть", font=("Arial", 8))
     result_turtle.goto(-r, r - 1.3)
-    result_turtle.write("• Красные точки: попадания в область", font=("Arial", 8))
+    result_turtle.write(
+        "• Красные точки: попадания в область",
+        font=(
+            "Arial",
+            8))
     result_turtle.goto(-r, r - 1.5)
     result_turtle.write("• Серые точки: промахи", font=("Arial", 8))
 

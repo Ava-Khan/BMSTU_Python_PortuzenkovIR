@@ -123,7 +123,11 @@ def plot_function():
     info_turtle.goto(-5, 2.8)
     info_turtle.write("• x ∈ [4, 6]: y = -2", font=("Arial", 10))
     info_turtle.goto(-5, 2.6)
-    info_turtle.write("• x ∈ [6, 10]: y = √(4 - (x-8)²) - 2", font=("Arial", 10))
+    info_turtle.write(
+        "• x ∈ [6, 10]: y = √(4 - (x-8)²) - 2",
+        font=(
+            "Arial",
+            10))
     info_turtle.hideturtle()
 
 

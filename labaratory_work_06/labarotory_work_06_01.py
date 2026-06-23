@@ -1,4 +1,6 @@
-#лаб 1
+# лаб 1
+from random import uniform
+import random
 from math import cos, sin
 
 
@@ -18,8 +20,8 @@ def lab1():
         f_out.write("Результаты функций:\n")
         f_out.write(f"{result1}\n")
         f_out.write(f"{result2}\n")
-#лаб 4
-import random
+
+# лаб 4
 
 
 def lab4():
@@ -40,7 +42,8 @@ def lab4():
             last_positive_index = i
             break
 
-    sum_before = sum(array[:last_positive_index]) if last_positive_index != -1 else 0
+    sum_before = sum(array[:last_positive_index]
+                     ) if last_positive_index != -1 else 0
 
     # Сжатие массива
     i = 0
@@ -62,9 +65,7 @@ def lab4():
         f_out.write(f"Массив после преобразования: {array}\n")
 
 
-#лаб 5
-
-from random import uniform
+# лаб 5
 
 
 def generate_matrix(size):
@@ -126,7 +127,8 @@ def lab5():
         for row in a:
             f_out.write(' '.join(f'{elem:7.2f}' for elem in row) + '\n')
 
-        f_out.write("\n1. Сумма элементов в столбцах без отрицательных элементов:\n")
+        f_out.write(
+            "\n1. Сумма элементов в столбцах без отрицательных элементов:\n")
         for col, sum_val in column_results:
             f_out.write(f"Столбец {col}: сумма = {sum_val:.2f}\n")
         f_out.write(f"Общая сумма: {sum_result:.2f}\n")
@@ -142,12 +144,12 @@ def run_all_labs():
     with open('output.txt', 'w', encoding='utf-8') as f_out:
         f_out.write("Результаты выполнения лабораторных работ:\n")
 
-
     lab1()
     lab4()
     lab5()
 
-    print("Все лабораторные работы выполнены. Результаты записаны в output.txt")
+    print("Все лабораторные работы выполнены."
+          " Результаты записаны в output.txt")
 
 
 if __name__ == "__main__":

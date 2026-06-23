@@ -35,7 +35,9 @@ class Parser:
             return p[0]
 
         # ============ PRINT ============
-        @self.pg.production('print_statement : PRINT OPEN_PAREN expression CLOSE_PAREN SEMI_COLON')
+        @self.pg.production(
+            'print_statement : PRINT OPEN_PAREN expression'
+            ' CLOSE_PAREN SEMI_COLON')
         def print_statement(p):
             return Print(p[2])
 
@@ -45,17 +47,22 @@ class Parser:
             return p[0]
 
         # ============ ОБЪЯВЛЕНИЕ ПЕРЕМЕННОЙ ============
-        @self.pg.production('var_declaration : LET IDENTIFIER ASSIGN expression SEMI_COLON')
+        @self.pg.production(
+            'var_declaration : LET IDENTIFIER ASSIGN'
+            ' expression SEMI_COLON')
         def var_declaration(p):
             return Assign(Variable(p[1].value), p[3])
 
         # ============ ЦИКЛ WHILE ============
-        @self.pg.production('while_statement : WHILE OPEN_PAREN expression CLOSE_PAREN statement')
+        @self.pg.production(
+            'while_statement : WHILE OPEN_PAREN expression'
+            ' CLOSE_PAREN statement')
         def while_statement(p):
             return WhileLoop(p[2], p[4])
 
         # ============ БЛОК ============
-        @self.pg.production('block_statement : OPEN_BRACE statement_list CLOSE_BRACE')
+        @self.pg.production(
+            'block_statement : OPEN_BRACE statement_list CLOSE_BRACE')
         def block_statement(p):
             return Block(p[1])
 

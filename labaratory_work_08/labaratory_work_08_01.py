@@ -85,7 +85,12 @@ def DrawAxes():
     while x <= Xmax:
         if abs(x) > 0.1:  # Не рисуем слишком близко к нулю
             x_pixel = Kx * (x - Xmin)
-            cv.create_line(x_pixel, y_zero - 5, x_pixel, y_zero + 5, fill="black")
+            cv.create_line(
+                x_pixel,
+                y_zero - 5,
+                x_pixel,
+                y_zero + 5,
+                fill="black")
             cv.create_text(x_pixel, y_zero + 15, text=f"{x:.1f}", anchor=N)
         x += dX
 
@@ -94,7 +99,12 @@ def DrawAxes():
     while y <= Ymax:
         if abs(y) > 0.1:  # Не рисуем слишком близко к нулю
             y_pixel = MaxY - Ky * (y - Ymin)
-            cv.create_line(x_zero - 5, y_pixel, x_zero + 5, y_pixel, fill="black")
+            cv.create_line(
+                x_zero - 5,
+                y_pixel,
+                x_zero + 5,
+                y_pixel,
+                fill="black")
             cv.create_text(x_zero - 10, y_pixel, text=f"{y:.1f}", anchor=E)
         y += dX
 
@@ -117,7 +127,7 @@ def DrawFunction(func, color, name):
                 if len(points) > 1:
                     cv.create_line(points, fill=color, width=2)
                 points = []
-        except:
+        except BaseException:
             points = []  # Начинаем новую линию при ошибке
         x += step
 
@@ -140,16 +150,33 @@ def Draw(event):
     # Получаем смещение b из поля ввода
     try:
         b = float(entries[7].get())  # поле "Смещение"
-    except:
+    except BaseException:
         b = 0.0
 
     # Рисуем графики
     DrawFunction(taylor_arctan, "blue", "Ряд Тейлора (arctg)")
-    DrawFunction(lambda x: analytic_arctan(x, b), "red", "Аналитическая (arctg + b)")
+    DrawFunction(lambda x: analytic_arctan(x, b),
+                 "red", "Аналитическая (arctg + b)")
 
     # Добавляем легенду
-    cv.create_text(10, 20, text="Синий: Ряд Тейлора", anchor=NW, fill="blue", font=("Arial", 10))
-    cv.create_text(10, 40, text="Красный: arctg(x) + b", anchor=NW, fill="red", font=("Arial", 10))
+    cv.create_text(
+        10,
+        20,
+        text="Синий: Ряд Тейлора",
+        anchor=NW,
+        fill="blue",
+        font=(
+            "Arial",
+            10))
+    cv.create_text(
+        10,
+        40,
+        text="Красный: arctg(x) + b",
+        anchor=NW,
+        fill="red",
+        font=(
+            "Arial",
+            10))
 
     print("Графики построены!")
 
@@ -187,14 +214,22 @@ def window_deleted():
     """Обрабатывает закрытие окна через [X]"""
     if askyesno("Выход", "Завершить работу?"):
         root.destroy()
- 
+
 
 # Привязка обработчиков событий
 cv.bind('<Button-1>', showXY)
 root.protocol('WM_DELETE_WINDOW', window_deleted)
 
 # Создаем метки и поля ввода
-labels_text = ["X:", "Y:", "Xmin:", "Xmax:", "Ymin:", "Ymax:", "Шаг меток:", "Смещение:"]
+labels_text = [
+    "X:",
+    "Y:",
+    "Xmin:",
+    "Xmax:",
+    "Ymin:",
+    "Ymax:",
+    "Шаг меток:",
+    "Смещение:"]
 entries = []
 
 for i, text in enumerate(labels_text):
